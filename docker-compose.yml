@@ -1,0 +1,19 @@
+---
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "10000:80"
+  frontend_dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "10001:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules  # avoid overwriting in the container
+    
